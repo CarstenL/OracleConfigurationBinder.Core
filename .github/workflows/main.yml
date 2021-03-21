@@ -42,5 +42,5 @@ jobs:
       run: find -name "*.nupkg" -print -exec gpr push -k ${{secrets.GH_PACKAGE}} {} \;
       
     - name: Push generated package to NuGet
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       run: dotnet nuget push ${{env.working-directory}}/OracleConfigurationBinder.Core/bin/Release/*.nupkg --skip-duplicate --api-key ${{ secrets.Nuget }} --source https://api.nuget.org/v3/index.json
